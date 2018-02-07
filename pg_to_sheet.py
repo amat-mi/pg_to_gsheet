@@ -93,13 +93,13 @@ def edit_wks_shp (sh, df, id, sottorete):
 
 
 def main():
-    filename = 'data/test.csv'
+    filename = 'data/pg_sheet_1_.csv'
     gc = pygsheets.authorize(outh_file='client_secret.json')
     df = pd.read_csv(filename, delimiter=';')
     list_id =[]
     list_url = []
     for j in get_sheet_name (df):
-        sheet_name='SDF__'+ j
+        sheet_name='SDF_'+ j
         sh = gc.open(sheet_name)
         for i in get_id (df):
             if i in list_id:
@@ -122,7 +122,7 @@ def main():
                     list_id.append(i)
                     list_url.append(edit_wks_shp (sh, df, i, j))
                     print 'created in file SDF_'+j +' worksheet  ' + str(i)
-                    time.sleep(5)
+                    time.sleep(10)
 
     df=pd.DataFrame.from_records (list_url, columns = ['id','url'])
     df.to_csv('data/url.csv')
