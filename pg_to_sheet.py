@@ -93,7 +93,7 @@ def edit_wks_shp (sh, df, id, sottorete):
 
 
 def main():
-    filename = 'data/pg_sheet_1_.csv'
+    filename = 'data/pg_sheet_.csv'
     gc = pygsheets.authorize(outh_file='client_secret.json')
     df = pd.read_csv(filename, delimiter=';')
     list_id =[]
